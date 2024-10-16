@@ -11,6 +11,8 @@ import { Console } from "../components/Console";
 import { Likes } from "../components/Likes";
 import { Refs } from "../components/Refs";
 import { Forward } from "../components/ForwardRef";
+import { OtherSearch } from "../components/OtherSearch";
+import { MySearch } from "../components/MySearch";
 
 export const routes = createBrowserRouter([
   {
@@ -61,6 +63,14 @@ export const routes = createBrowserRouter([
       {
         path: "forward",
         Component: Forward,
+      },
+      {
+        path: "othersearch",
+        Component: OtherSearch,
+      },
+      {
+        path: "mysearch",
+        Component: MySearch,
       },
     ],
   },

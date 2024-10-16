@@ -11,11 +11,13 @@ export const Navigation: FC = () => {
         marginTop: "2rem",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
+        gap: "10px",
         alignItems: "center",
       }}
     >
       <Link to={"search"}>Search</Link>
+      <Link to={"othersearch"}>OtherSearch</Link>
+      <Link to={"mysearch"}>MySearch</Link>
       <Link to={"todo"}>Todo</Link>
       <Link to={"mousemove"}>Mouse</Link>
       <Link to={"visible"}>Visible</Link>

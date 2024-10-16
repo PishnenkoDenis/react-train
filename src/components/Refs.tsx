@@ -1,4 +1,11 @@
-import { RefObject, useEffect, useLayoutEffect, useRef, useState } from "react";
+import {
+  RefObject,
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 
 export const Refs = () => {
   const wrapRef: RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
@@ -6,6 +13,13 @@ export const Refs = () => {
   const [size, setSize] = useState(wrapRef.current?.clientWidth);
   const [leftSize, setLeftSize] = useState<number | null>(null);
   const [rightSize, setRightSize] = useState<number | null>(null);
+  const [wrapHeight, setWrapHeight] = useState<number | null>(null);
+
+  const callbackRef = useCallback((node: Element) => {
+    if (node !== null) {
+      setWrapHeight(node.getBoundingClientRect().height);
+    }
+  }, []);
 
   useEffect(() => {
     setSize(wrapRef.current?.clientWidth);
@@ -120,11 +134,13 @@ export const Refs = () => {
           border: "1px solid black",
           padding: "0.5rem",
         }}
+        ref={callbackRef as React.LegacyRef<HTMLDivElement> | undefined}
       >
         <span>Size is {size}px</span>
         <span>
           Left: {leftSize}px; Right: {rightSize}px
         </span>
+        <span>WrapHeight: {wrapHeight && Math.round(wrapHeight)}px;</span>
       </div>
     </div>
   );
