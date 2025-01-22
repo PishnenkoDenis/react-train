@@ -93,12 +93,6 @@ export const Todo = () => {
   const handleEdit = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       if (e.key === "Enter" && edit !== "") {
-        // const edited = todos.map((todo) => {
-        //   if (todo.id === editId) {
-        //     todo.todo = edit;
-        //   }
-        //   return todo;
-        // });
         setTodos((prev) =>
           [...prev].map((todo) => {
             if (todo.id === editId) {

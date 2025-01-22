@@ -43,13 +43,10 @@ export const OtherSearch = () => {
   };
 
   const debouncedFetch = debounce(fetchPeople, 500);
-  const debouncedCb = useCallback(debouncedFetch, []);
+  const debouncedCb = useCallback(debouncedFetch, [debouncedFetch]);
 
   useEffect(() => {
-    if (!search) {
-      setHeroes([]);
-      setIsFetching(false);
-    } else {
+    if (search) {
       //   apiService(search)
       //     .then((data) => {
       //       setHeroes(data.results);

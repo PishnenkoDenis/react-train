@@ -19,6 +19,7 @@ const Button: FC<PropsWithChildren<IButtonProps>> = memo(
 export const Counter = () => {
   const [count, setCount] = useState(0);
   const [isStoped, setIsStoped] = useState(true);
+  const [counter, setCounter] = useState(0);
 
   const handleClick = useCallback(() => {
     setIsStoped((prev) => !prev);
@@ -28,6 +29,10 @@ export const Counter = () => {
     setCount(0);
     setIsStoped(true);
   }, []);
+
+  const handleCounter = () => {
+    setCounter(+1);
+  };
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout | null = null;
@@ -52,6 +57,8 @@ export const Counter = () => {
       }}
     >
       <p style={{ textAlign: "center" }}>{count}</p>
+      <p style={{ textAlign: "center" }}>{counter}</p>
+      {/* 1 */}
       <div
         style={{
           display: "flex",
@@ -63,6 +70,7 @@ export const Counter = () => {
       >
         <Button onClick={handleClick}>{isStoped ? "Start" : "Stop"}</Button>
         <Button onClick={handleCancel}>Cancel</Button>
+        <Button onClick={handleCounter}>Counter</Button>
       </div>
     </div>
   );

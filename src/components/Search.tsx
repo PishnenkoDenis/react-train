@@ -36,7 +36,7 @@ export const Search = () => {
   const [heroes, setHeroes] = useState([]);
   const [search, setSearch] = useState("");
   const [isFetching, setIsFetching] = useState(false);
-  const [error, setError] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const cachedRef = useRef(new Map());
 
@@ -57,7 +57,7 @@ export const Search = () => {
         setIsFetching(false);
       } catch (error) {
         setIsFetching(false);
-        setError(true);
+        setIsError(true);
       }
     };
 
@@ -69,7 +69,7 @@ export const Search = () => {
     }
   }, [debouncedSearch]);
 
-  if (error) {
+  if (isError) {
     return <p>Something went wrong...</p>;
   }
 
@@ -112,7 +112,9 @@ export const Search = () => {
       >
         {isFetching
           ? "Data is loading..."
-          : heroes.map((hero: any) => <p key={hero.name}>{hero.name}</p>)}
+          : search
+          ? heroes.map((hero: any) => <p key={hero.name}>{hero.name}</p>)
+          : null}
       </div>
     </div>
   );

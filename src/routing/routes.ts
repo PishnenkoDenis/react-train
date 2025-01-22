@@ -13,6 +13,12 @@ import { Refs } from "../components/Refs";
 import { Forward } from "../components/ForwardRef";
 import { OtherSearch } from "../components/OtherSearch";
 import { MySearch } from "../components/MySearch";
+import { List } from "../components/List";
+import { ConsoleChild } from "../components/ConsoleChildren";
+import { NewSearch } from "../components/NewSearch";
+import { NewTodo } from "../components/NewTodo";
+import { PreviousVal } from "../components/PreviousVal";
+import { InputRef } from "../components/InputRef";
 
 export const routes = createBrowserRouter([
   {
@@ -26,6 +32,10 @@ export const routes = createBrowserRouter([
       {
         path: "todo",
         Component: Todo,
+      },
+      {
+        path: "newtodo",
+        Component: NewTodo,
       },
       {
         path: "mousemove",
@@ -71,6 +81,26 @@ export const routes = createBrowserRouter([
       {
         path: "mysearch",
         Component: MySearch,
+      },
+      {
+        path: "newsearch",
+        Component: NewSearch,
+      },
+      {
+        path: "list",
+        Component: List,
+      },
+      {
+        path: "children",
+        Component: ConsoleChild,
+      },
+      {
+        path: "prev",
+        Component: PreviousVal,
+      },
+      {
+        path: "inputref",
+        Component: InputRef,
       },
     ],
   },

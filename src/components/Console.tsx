@@ -36,4 +36,4 @@ export const Console = () => {
   return <Child count={count} />;
 };
 
-//1 5 6 2 4 3
+//1 5 2 4 6 3   1 5 2 4 1  1 6 3 5 2

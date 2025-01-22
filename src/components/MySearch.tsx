@@ -20,7 +20,7 @@ const debounce = (cb: (args: any) => void, delay: number) => {
 
   return (...args: any) => {
     clearTimeout(timerId as NodeJS.Timeout);
-    setTimeout(() => {
+    timerId = setTimeout(() => {
       timerId = null;
       cb(args);
     }, delay);
@@ -50,13 +50,10 @@ const useFetching = (value: string) => {
 
   const debouncedFetch = debounce(fetchData, 500);
 
-  const fetchResult = useCallback(debouncedFetch, []);
+  const fetchResult = useCallback(debouncedFetch, [debouncedFetch]);
 
   useEffect(() => {
-    if (!value) {
-      setData([]);
-      setIsFetching(false);
-    } else {
+    if (value) {
       const cache = cacheRef.current.get(value);
       cache ? setData(cache) : fetchResult(value);
     }
